@@ -10,10 +10,14 @@ public sealed class Mgr01
         counter++;
         Console.WriteLine("Counter Value " + counter.ToString());
     }
-    public static Mgr01 GetInstance()
+    public static Mgr01 GetInstance
     {
-        instance ??= new Mgr01();
-        return instance;
+        get
+        {
+            if (instance == null)
+                instance = new Mgr01();
+            return instance;
+        }
     }
     public void PrintDetails(string message)
     {

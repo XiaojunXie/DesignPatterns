@@ -12,13 +12,16 @@ public class Mgr02
         Console.WriteLine("Count value: " + counter.ToString());
     }
 
-    public static Mgr02 GetInstance()
+    public static Mgr02 GetInstance
     {
-        lock (InstanceLock)
+        get
         {
-            instance ??= new Mgr02();
-            return instance;
+            lock (InstanceLock)
+            {
+                return instance ?? (instance = new Mgr02());
+            }
         }
+        
     }
     
     public void PrintDetails(string message)
